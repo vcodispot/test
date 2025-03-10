@@ -168,7 +168,28 @@ resource "aws_security_group" "load_balancer_security_group" {
   }
 }
 
+resource "aws_security_group_2" "load_balancer_security_group_2" {
+  name        = "Load-Balancer-SG-2"
+  description = "SG for load balancer created from terraform"
+  vpc_id      = aws_vpc.lab-vpc.id
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name = "aws-goat-m2-sg-2"
+  }
+}
 
 resource "aws_iam_role" "ecs-instance-role" {
   name                 = "ecs-instance-role"
