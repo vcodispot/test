@@ -127,7 +127,7 @@ resource "aws_security_group" "database-security-group" {
 }
 
 # Create Database Instance Restored from DB Snapshots
-# terraform aws db instance
+# terraform aws db instances
 resource "aws_db_instance" "database-instance" {
   identifier             = "aws-goat-db"
   allocated_storage      = 10
